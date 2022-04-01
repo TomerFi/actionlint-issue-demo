@@ -1,0 +1,21 @@
+---
+name: CI
+
+on:
+  workflow_dispatch:
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    environment: deployment
+    name: Build, publish, release, and announce
+
+    steps:
+      - name: Set output value with the script action
+        id: dummy
+        uses: actions/github-script@v6
+        with:
+          script: core.setOutput('value', 'dummy-value')
+
+      - name: Read output value
+        run: echo '${{ steps.dummy.outputs.value }}'
