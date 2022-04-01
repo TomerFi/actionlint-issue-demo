@@ -15,7 +15,9 @@ jobs:
         id: dummy
         uses: actions/github-script@v6
         with:
-          script: core.setOutput('value', 'dummy-value')
+          script: |
+            console.log("adding a line")
+            core.setOutput('value', 'dummy-value')
 
       - name: Read output value
         run: echo '${{ steps.dummy.outputs.value }}'
